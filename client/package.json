@@ -1,0 +1,34 @@
+{
+  "name": "yourthought",
+  "version": "1.0.0",
+  "description": "Blogging website",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start",
+    "start": "nodemon start"
+  },
+  "author": "Abhay Bhadouriya",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.1",
+    "connect-session-sequelize": "^7.1.5",
+    "cors": "^2.8.5",
+    "death": "^1.1.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-rate-limit": "^6.7.0",
+    "express-session": "^1.17.3",
+    "firebase": "^9.15.0",
+    "firebase-admin": "^11.4.1",
+    "helmet": "^6.0.1",
+    "mysql2": "^2.3.3",
+    "nodemailer": "^6.8.0",
+    "nodemon": "^2.0.20",
+    "sequelize": "^6.28.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.5.2"
+  }
+}
