@@ -11,11 +11,29 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      follows.belongsTo(models.User,{
+        soruceKey:'userId',
+        foreignKey:'followerId',
+        onDelete:"RESTRICT"
+      })
+      follows.belongsTo(models.User,{
+        sourceKey:'userId',
+        foreignKey:'followedById',
+        onDelete:"RESTRICT"
+      }) 
     }
   }
   follows.init({
-    name: DataTypes.STRING
+    followerId: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    followedById: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   }, {
+    timestamps:true,
     sequelize,
     modelName: 'follows',
   });

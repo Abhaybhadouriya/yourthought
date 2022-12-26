@@ -159,7 +159,7 @@ module.exports.viewDocumentListUser = async (req, res) => {
 module.exports.filterList = async (req, res) => {
   try {
     const { query } = req.body
-    documents = await models.Document.findAll({
+    const documents = await models.Document.findAll({
       where: {
         published:1,
         [Op.or]: [{ title: { [Op.like]: `%${query}%` } },

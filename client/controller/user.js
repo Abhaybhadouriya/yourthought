@@ -1,27 +1,7 @@
 const models = require("../database/models");
 const { Op } = require("sequelize");
-// const { log } = require("../utils/log");
 const firebase = require("../firebase");
-// const admin = require("firebase-admin");
 const mainSender = require("../utils/mailSender")
-
-module.exports.loginUser = async (req, res) => {
-  try {
-    // const { password, email, name} = req.body;
-
-    return res.status(200).json({
-      status: 200,
-      message: "User Logged in successfully",
-    });
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({
-      status: 500,
-      message: "Internal server error occured. Please try again",
-    });
-  }
-};
-
 
 module.exports.registerUser = async (req, res) => {
   try {
@@ -89,37 +69,20 @@ module.exports.registerUser = async (req, res) => {
 
       })
       .catch((err) => {
+       
         return res.status(500).json({
           status: 500,
-          message: "Firebase not Responded. Please try again",
+          erorr:err.errorInfo,
         });
       });
 
   } catch (error) {
-    console.log(error);
     return res.status(500).json({
       status: 500,
       message: "Internal server error occured. Please try again",
     });
   }
 };
-
-
-module.exports.forgotPassword = async (req, res) => {
-  try {
-    return res.status(200).json({
-      status: 200,
-      message: "Password Forgot Email is Sent on your Registered Email-ID",
-    });
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({
-      status: 500,
-      message: "Internal server error occured. Please try again",
-    });
-  }
-};
-
 
 module.exports.userBanByAdmin = async (req, res) => {
   try {

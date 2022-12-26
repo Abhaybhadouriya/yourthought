@@ -4,7 +4,21 @@ const { Op } = require("sequelize");
 
 module.exports.comment= async (req, res) => {
   try {
+    const {docId,userId,commentText} = req.body;
+    await models.Comment.create({
+      docId:docId,
+      userId:userId,
+      commentText:commentText
+    })
+
+    const data = await models.Comment.findAll({
+      where:{
+        docId:docId
+      }
+    })
+
     return res.status(200).json({
+      data:data,
       status: 200,
       message: "Comment Posted successfully",
     });
@@ -20,8 +34,25 @@ module.exports.comment= async (req, res) => {
 
 module.exports.deleteCommnet = async (req, res) => {
     try {
+      const {docId,userId,id} = req.body;
+
+      await models.Comment.destroy({
+        where:{
+          docId:docId,
+          userId:userId,
+          id:id
+        }
+      })
+
+      const data = await models.Comment.findAll({
+        where:{
+          docId:docId
+        }
+      })
+  
+
       return res.status(200).json({
-        status: 200,
+        data:data,
         message: "Comment Deleted successfully",
       });
     } catch (error) {
@@ -36,8 +67,15 @@ module.exports.deleteCommnet = async (req, res) => {
   
 module.exports.viewCommentOnPost = async (req, res) => {
     try {
+      const {docId,userId,id} = req.body;
+      const data = await models.Comment.findAll({
+        where:{
+          docId:docId
+        }
+      })
+  
       return res.status(200).json({
-        status: 200,
+        data:data,
         message: "Comments Fetched",
       });
     } catch (error) {
@@ -52,8 +90,21 @@ module.exports.viewCommentOnPost = async (req, res) => {
   
 module.exports.viewCommentOnProfile = async (req, res) => {
     try {
+      const {docId,userId,id} = req.body;
+      const data = await models.Comment.findAll({
+        where:{
+          userId:userId
+        },
+        include:[{
+          model:models.Document,
+          required: false,
+          attributes: ['title', 'tags','createdAt']
+        }],
+        attributes: ["commentText"]
+      })
+  
       return res.status(200).json({
-        status: 200,
+        data:data,
         message: "User Comments List Fetched Successfully",
       });
     } catch (error) {

@@ -11,11 +11,28 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-    }
+      Likes.belongsTo(models.User,{
+        foreignKey:'userId',
+        onDelete:"RESTRICT"
+      })
+      Likes.belongsTo(models.Document,{
+        foreignKey:'docId',
+        onDelete:"RESTRICT"
+      })
+    }  
   }
   Likes.init({
-    name: DataTypes.STRING
+   
+    docId: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    userId: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   }, {
+    timestamps:true,
     sequelize,
     modelName: 'Likes',
   });
