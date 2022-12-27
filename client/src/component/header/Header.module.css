@@ -14,7 +14,7 @@
     background-color: white;
     color: rgb(50, 150, 250);
     border: none;
-    font-size: 18px;
+    font-size: 20px;
     border-radius: 5px;
     padding-left: 5px;
     padding-right: 5px;
@@ -30,11 +30,41 @@
      background-color: rgb(255, 255, 255);
      color: black;
      border: none;
-    font-size: 18px;
+    font-size: 20px;
     border-radius: 5px;
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 2px;
     padding-bottom: 2px;
     cursor: pointer;
+ }
+ .outerBlog{
+    width: auto;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(50, 150, 250);
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+ }
+ .spanBlog{
+    margin-left: 5px;
+     padding: 2px;
+     font-size: 24px;
+     font-weight: 500;
+ }
+ .buttonBlog{
+    border-width: 0px;
+    border-radius: 5px;
+    background-color: rgb(65, 123, 131);
+    color: white;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    cursor: pointer;
+    
  }

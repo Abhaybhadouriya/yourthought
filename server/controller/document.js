@@ -101,7 +101,8 @@ module.exports.deleteDocument = async (req, res) => {
 
 module.exports.viewDocument = async (req, res) => {
   try {
-    const { docId } = req.body;
+   const { docId } = req.query
+
     const docRef = firebase.firestore().collection('documents').doc(docId)
     const doc = await docRef.get();
 
@@ -130,7 +131,7 @@ module.exports.viewDocument = async (req, res) => {
 module.exports.viewDocumentListUser = async (req, res) => {
   try {
 
-    const { userId } = req.body;
+    const { userId } = req.query;
     const docRef = firebase.firestore().collection('documents')
     const snapshot = await docRef.where('userId', '==', userId).get();
     if (snapshot.empty) {

@@ -1,0 +1,73 @@
+.compHolder{
+    min-height: 80vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-image: url("../../public/background.jpg");
+    background-attachment: "fixed";
+    background-size: cover;
+    justify-content: center;
+    
+}
+.compOuterPwd{
+    max-width: 80%;
+    min-width: 300px;
+    background-color: #ffffff;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 10px;
+    padding-left: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.compOuter{
+    max-width: 80%;
+    min-width: 300px;
+    background-color: #ffffff;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 10px;
+    padding-left: 10px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 4px 4px 16px 4px rgb(0 0 0 / 20%), 4px 4px 16px 4px rgb(0 0 0 / 20%);
+
+}
+.inputCompt{
+    width: 80%;
+    padding: 3px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    border-radius: 10px;
+    border-color: rgb(50, 150, 250);
+}
+
+.loginBtn{
+    width: 50%;
+    background-color: rgb(50, 150, 250);
+    font-size: 19px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.compLinkBtn{
+    font-size: 18px;
+    color: rgb(50, 150, 250);
+    text-decoration: underline;
+    background-color: #ffffff;
+    border: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}

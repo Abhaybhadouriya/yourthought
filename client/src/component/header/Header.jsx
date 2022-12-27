@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react'
+import React,{useState} from 'react'
 import styles from "./Header.module.css"
 const Header = (props) => {
   const [data, setdata] = useState(null)

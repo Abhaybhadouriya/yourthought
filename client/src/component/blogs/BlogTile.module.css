@@ -1,0 +1,57 @@
+.outer{
+    margin: 8px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 4px 8px 0 rgb(0 0 0 / 20%);
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    width: 350px;
+}
+
+.title{
+    font-size: 24px;
+    color: black;
+    font-weight: 550;
+    font-family: cursive;
+    padding: 1px;
+}
+.tags{
+    font-size: 18px;
+    color: rgb(58, 57, 57);
+    font-weight: 400;
+    font-family: cursive;
+    padding: 1px;
+
+}
+.date{
+    font-size: 18px;
+    color: rgb(58, 57, 57);
+    font-weight: 400;
+    font-family: cursive;
+    padding: 1px;
+
+}
+.name{
+    font-size: 18px;
+    color: rgb(58, 57, 57);
+    font-weight: 400;
+    font-family: cursive;
+    padding: 1px;
+
+}
+.lowerDiv{
+    display: flex;
+    justify-content: space-between;
+}
+
+.button{
+    border-width: 0px ;
+   background-color: rgb(20, 120, 220);
+   color: white;
+   font-size: 18px;
+   cursor: pointer;
+   border-radius: 10px;
+   padding-top: 5px;
+   padding-bottom: 5px;
+   padding-left: 10px;
+   padding-right: 10px;
+}

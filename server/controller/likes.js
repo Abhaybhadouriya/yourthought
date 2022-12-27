@@ -5,7 +5,7 @@ const { Op } = require("sequelize");
 module.exports.likes= async (req, res) => {
   try {
 
-    const {userId,docId} = req.body
+    const {userId,docId} = req.query
     
     const data = {
       docId:docId,
@@ -27,7 +27,7 @@ module.exports.likes= async (req, res) => {
         }
       })
       return res.status(200).json({
-        Likes: totLikes,
+        totLikes: totLikes,
         docId:docId,
         message: "Post is DisLiked",
       });
@@ -56,7 +56,7 @@ module.exports.likes= async (req, res) => {
 module.exports.viewLikePost = async (req, res) => {
     try {
 
-      const {docId} =  req.body;
+      const {docId} =  req.query;
 
       const totLikes =  await models.Likes.count({
         where:{docId}
@@ -78,7 +78,7 @@ module.exports.viewLikePost = async (req, res) => {
   
 module.exports.viewLikeInProfile = async (req, res) => {
     try {
-      const {userId} = req.body;
+      const {userId} = req.query;
       const dataJson = await models.Likes.findAll({
         where:{
           userId:userId
@@ -88,7 +88,7 @@ module.exports.viewLikeInProfile = async (req, res) => {
           required: false,
           attributes: ['title', 'tags','createdAt']
         }],
-        attributes: ['createdAt']
+        attributes: ['createdAt',"docId"]
        
       })
       return res.status(200).json({

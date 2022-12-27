@@ -4,7 +4,7 @@ const { Op } = require("sequelize");
 
 module.exports.comment= async (req, res) => {
   try {
-    const {docId,userId,commentText} = req.body;
+    const {docId,userId,commentText} = req.query;
     await models.Comment.create({
       docId:docId,
       userId:userId,
@@ -14,7 +14,9 @@ module.exports.comment= async (req, res) => {
     const data = await models.Comment.findAll({
       where:{
         docId:docId
-      }
+      },order: [
+        ['id', 'DESC'],
+        ],
     })
 
     return res.status(200).json({
@@ -34,7 +36,7 @@ module.exports.comment= async (req, res) => {
 
 module.exports.deleteCommnet = async (req, res) => {
     try {
-      const {docId,userId,id} = req.body;
+      const {docId,userId,id} = req.query;
 
       await models.Comment.destroy({
         where:{
@@ -67,11 +69,17 @@ module.exports.deleteCommnet = async (req, res) => {
   
 module.exports.viewCommentOnPost = async (req, res) => {
     try {
-      const {docId,userId,id} = req.body;
+      const {docId} = req.query;
       const data = await models.Comment.findAll({
         where:{
-          docId:docId
-        }
+          docId:docId,
+        },include:[{
+          model:models.User,
+          required: false,
+          attributes: ['name']
+        }],order: [
+          ['id', 'DESC'],
+          ],
       })
   
       return res.status(200).json({
@@ -90,7 +98,7 @@ module.exports.viewCommentOnPost = async (req, res) => {
   
 module.exports.viewCommentOnProfile = async (req, res) => {
     try {
-      const {docId,userId,id} = req.body;
+      const {userId} = req.query;
       const data = await models.Comment.findAll({
         where:{
           userId:userId

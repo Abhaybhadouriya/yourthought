@@ -4,7 +4,7 @@ const { Op } = require("sequelize");
 
 module.exports.doFollow= async (req, res) => {
   try { 
-    const {followerId,followedById} = req.body;
+    const {followerId,followedById} = req.query;
     const data = {
         followedById:followedById,
         followerId:followerId,
@@ -19,7 +19,11 @@ module.exports.doFollow= async (req, res) => {
         await models.follows.destroy({
             where:data
         })
+        const totFollower =  await models.follows.count({
+          where :{followerId}
+        })
         return res.status(200).json({
+          totFollower:totFollower,
             status: 200,
             message: "User is Unfollowed",
         });
@@ -28,8 +32,13 @@ module.exports.doFollow= async (req, res) => {
     await models.follows.create({
       followerId,followedById
      })
+
+     const totFollower =  await models.follows.count({
+      where :{followerId}
+    })
    
     return res.status(200).json({
+      totFollower:totFollower,
       status: 200,
       message: "followed successfully",
     });
@@ -45,7 +54,7 @@ module.exports.doFollow= async (req, res) => {
 
 module.exports.viewFollowers = async (req, res) => {
     try {
-      const {followerId} = req.body
+      const {followerId} = req.query
 
       const data =  await models.follows.findAll({
         where:{followerId},
@@ -71,7 +80,7 @@ module.exports.viewFollowers = async (req, res) => {
 
   module.exports.viewFollowed = async (req, res) => {
     try {
-      const {followedById} = req.body
+      const {followedById} = req.query
 
       const data =  await models.follows.findAll({
         where:{followedById},
@@ -100,7 +109,7 @@ module.exports.viewFollowCount = async (req, res) => {
     try {
       
   
-      const {followerId} = req.body
+      const {followerId} = req.query
 
       const totFollower =  await models.follows.count({
         where :{followerId}

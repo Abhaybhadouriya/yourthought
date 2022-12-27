@@ -5,7 +5,8 @@ const mainSender = require("../utils/mailSender")
 
 module.exports.registerUser = async (req, res) => {
   try {
-    const { password, email, name } = req.body;
+    const { password, email, name } = req.query;
+    // console.log(password,email,name)
       firebase.auth()
       .createUser({
         email: email,
@@ -50,12 +51,12 @@ module.exports.registerUser = async (req, res) => {
                 };
 
                 models.User.create(userDetails);
-                console.log('Email sent: ' + info.response);
+                // console.log('Email sent: ' + info.response);
               }
             });
             return res
               .status(201)
-              .json({ message: `user ${data.displayName} signed up successfully, Please Verify Your Email`, uid: data.uid, name: data.displayName, email: data.email });
+              .json({ message: `Hi ${data.displayName} registration is successful and Verification mail is sent on your registered mail, Please Verify Your Email, `, uid: data.uid, name: data.displayName, email: data.email });
           })
           .catch((error) => {
             firebase.auth().deleteUser(data.uid);
@@ -69,10 +70,11 @@ module.exports.registerUser = async (req, res) => {
 
       })
       .catch((err) => {
-       
+     
         return res.status(500).json({
           status: 500,
-          erorr:err.errorInfo,
+          message:err.errorInfo.message,
+          erorr:err.errorInfo
         });
       });
 
