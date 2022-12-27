@@ -1,0 +1,16 @@
+.footer{
+    width: 100%;
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
+   
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgb(50, 150, 250);
+    color: white;
+   
+    
+}
+.footerCredit{
+    color: rgb(173, 1, 1);
+}

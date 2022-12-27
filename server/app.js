@@ -49,10 +49,7 @@ app.use(
       httpOnly: true,
     },
     name: "session",
-    store: new SequelizeStore({
-      db: sequelize,
-      table: "SessionToken",
-    }),
+   
   })
 );
 
