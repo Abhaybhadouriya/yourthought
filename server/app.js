@@ -6,6 +6,7 @@ const session = require("express-session");
 const allConfig = require("./config");
 // const validateUser = require("./middleware/validateUser");
 const { sequelize } = require("./database/models");
+const MongoStore = require('connect-mongo')(session);
 
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
@@ -42,6 +43,7 @@ app.use(
     secret: allConfig.cookie_secret,
     resave: false,
     saveUninitialized: false,
+    store: new MongoStore(options),
     cookie: {
       maxAge: 3600 * 24 * 1000, // 1 day
       sameSite: "Lax",
