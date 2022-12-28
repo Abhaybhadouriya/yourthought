@@ -10,7 +10,7 @@ module.exports = (app) => {
   app.use("/api/comment", comment);
   app.use("/api/documents", documents);
   app.use("/api/followFunction",followFunction);
-
+ 
   app.get("/api/", (req, res) => {
     res.statusCode = 200;
     res.send(`<table>
