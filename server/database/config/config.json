@@ -4,20 +4,23 @@
     "password": "",
     "database": "yourthought",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+  "dialectModule": "mysql2"
   },
   "test": {
     "username": "root",
     "password": "",
     "database": "yourthought",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+  "dialectModule": "mysql2"
   },
   "production": {
     "username": "root",
     "password": "",
     "database": "yourthought",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+  "dialectModule": "mysql2"
   }
 }
