@@ -33,9 +33,10 @@ yarn-error.log*
 /coverage
 
 # production
-/build
+#/build
 
 # misc
+.env
 .DS_Store
 .env.local
 .env.development.local
