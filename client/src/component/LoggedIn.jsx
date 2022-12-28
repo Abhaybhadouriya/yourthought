@@ -1,6 +1,5 @@
 import React from 'react'
 import Footer from './footer/Footer'
-// import Header from '../containers/Header'
 import FilterPage from './blogs/FilterPage'
 import Header from './header/Header'
 import HeaderBlog from './header/HeaderBlog'
