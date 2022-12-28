@@ -11,7 +11,7 @@ module.exports = (app) => {
   app.use("/api/documents", documents);
   app.use("/api/followFunction",followFunction);
 
-  app.get("/api/", (req, res) => {
+  app.get("/", (req, res) => {
     res.statusCode = 200;
     res.send(`<table>
     <tr><th>Request</th><th>USER</th></tr>
@@ -44,10 +44,10 @@ module.exports = (app) => {
     <tr><td>get</td><td><a href="#">/api/followFunction/notifyFollowers</a></td></tr>
     </table>`);
   }); 
-  app.get("/", (req, res) => {
-    res.statusCode = 200;
-    res.send(`Hello....... <tr><td>post</td><td><a href="#">/api/user/registerUser</a></td></tr>.......... Guest`);
-  }); 
+  // app.get("/", (req, res) => {
+  //   res.statusCode = 200;
+  //   res.send(`Hello....... <tr><td>post</td><td><a href="#">/api/user/registerUser</a></td></tr>.......... Guest`);
+  // }); 
 
   app.use("*", (req, res) => {
     res.statusCode = 404; 
