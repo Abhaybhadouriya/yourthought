@@ -88,16 +88,12 @@ module.exports.viewFollowers = async (req, res) => {
   module.exports.viewFollowed = async (req, res) => {
     try {
       const {followedById} = req.query
-
-      const data =  await models.follows.findAll({
-        where:{followedById},
-        include:[{
-          model:models.User,
-          required: false,
-          attributes: ['name']
-        }],
-        attributes: ['createdAt',"followedById"]
-      })
+      const query = "SELECT * FROM `u883350542_Yourthought`.`follows` LEFT JOIN `u883350542_Yourthought`.`Users` ON `u883350542_Yourthought`.`follows`.`followerId` = `u883350542_Yourthought`.`Users`.`id` WHERE `followedById`='"+followedById+"'"
+     
+      const data = await sequelize.query(query , {
+        type: QueryTypes.SELECT
+          })
+          
       return res.status(200).json({
         data:data,
         message: "Follower List Fetched",

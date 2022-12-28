@@ -63,7 +63,7 @@ const Profile = () => {
       params: { followerId: id },
     }).then((res) => {
       // setComment(res.data.data)
-      console.log("DOCS", res.data.data);
+      console.log("Follower", res.data.data);
       setfollower(res.data.data);
     });
   };
@@ -121,7 +121,7 @@ const Profile = () => {
       params: { followedById: id },
     }).then((res) => {
       // setComment(res.data.data)
-      // console.log("DOCS", res.data.data);
+      console.log("Following", res.data.data);
       setfollowing(res.data.data);
     });
   };
@@ -339,6 +339,7 @@ const Profile = () => {
       <HeaderBlog />
   {loaderSet && profileUser===undefined?<LoaderPage/>:
       <div className={styles.profileContent}>
+        
         {profileUser ? <ProfileComp /> : <></>}
         {document !== undefined ? (
           <>
@@ -363,7 +364,7 @@ const Profile = () => {
             })}
           </>
         ) : (
-          <></>
+          <LoaderPage/>
         )}
         {following !== undefined ? (
           <>
@@ -372,15 +373,15 @@ const Profile = () => {
               return (
                 <FollowingComp
                   key={i}
-                  title={e.User.name}
+                  title={e.name}
                   date={e.createdAt}
-                  userId={e.followedById}
+                  userId={e.id}
                 />
               );
             })}
           </>
         ) : (
-          <></>
+          <LoaderPage/>
         )}
         {follower !== undefined ? (
           <>
@@ -389,7 +390,7 @@ const Profile = () => {
               return (
                 <FollowerComp
                   key={i}
-                  title={e.User.name}
+                  title={e.name}
                   date={e.createdAt}
                   userId={e.followedById}
                 />
@@ -397,7 +398,7 @@ const Profile = () => {
             })}
           </>
         ) : (
-          <></>
+          <LoaderPage/>
         )}
         {comment !== undefined ? (
           <>
@@ -416,7 +417,7 @@ const Profile = () => {
             })}
           </>
         ) : (
-          <></>
+          <LoaderPage/>
         )}
         {likes !== undefined ? (
           <>
@@ -434,7 +435,7 @@ const Profile = () => {
             })}
           </>
         ) : (
-          <></>
+          <LoaderPage/>
         )}
       </div>
 }
