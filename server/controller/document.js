@@ -3,6 +3,9 @@ const { Op } = require("sequelize");
 // const { log } = require("../utils/log");
 const firebase = require("../firebase");
 const { v4: uuidv4 } = require("uuid");
+const { sequelize } = require("../database/models");
+const { QueryTypes } = require('sequelize');
+const mainSender = require("../utils/mailSender")
 
 module.exports.updateDocument = async (req, res) => {
   try {
@@ -34,11 +37,46 @@ module.exports.updateDocument = async (req, res) => {
 };
 
 module.exports.saveDocument = async (req, res) => {
+
+  const notify = (email,title,name,doc,auth) =>{
+    var mailOptions = {
+      from: 'admin@gurujikenotes.tech',
+      to: email,
+      subject: `New Post - ${title}`,
+      text: `Hello ${name}, 
+
+      ${auth} is uplaoded new Post please cheack it out.
+      
+      https://youthought.abhaybhadouriya.tech/blogs/${doc}
+      
+      Thanks,
+      
+      YourThought team`
+    };
+    mainSender.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        return res.status(500).json({
+          status: 500,
+          message: "Email not send. Please try again",
+        });
+      } else {
+      console.log('Email sent: ' + info.response);
+        };
+
+       
+      }
+    );
+  }
+
+
   try {
     const { title, content, userId, tags, name} = req.query.e;
+    // const { title, content, userId, tags, name} = req.body;
     const docId = uuidv4()
     const fs = firebase.firestore();
-
+    // console.log(userId);
+    // console.log(userId);
+        
     fs.collection('documents').doc(docId).set({
       title: title,
       name: name,
@@ -52,13 +90,22 @@ module.exports.saveDocument = async (req, res) => {
       title: title,
       tags: tags
     }
+    
 
     models.Document.create(documentData)
-    return res.status(201).json({
-      message: "Blog is Successfully saved",
+    
+    const query = "SELECT * FROM `u883350542_Yourthought`.`follows` LEFT JOIN `u883350542_Yourthought`.`Users` ON `u883350542_Yourthought`.`follows`.`followedById` = `u883350542_Yourthought`.`Users`.`id` WHERE `followerId` = '"+userId+"'";
+    const users = await sequelize.query(query , {
+      type: QueryTypes.SELECT
+        })
+
+    users.forEach(element => {
+      notify(element.email,title,element.name,docId,name)
     });
-
-
+    return res.status(201).json({
+      data :users,
+          message: "Blog is Successfully saved",
+    });
   } catch (error) {
     console.log(error);
     return res.status(500).json({
