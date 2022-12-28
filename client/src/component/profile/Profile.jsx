@@ -118,7 +118,7 @@ const Profile = () => {
       url: `${URL_BASE}followFunction/viewFollowed`,
       changeOrigin: true,
       method: "get",
-      params: { followerId: id },
+      params: { followedById: id },
     }).then((res) => {
       // setComment(res.data.data)
       // console.log("DOCS", res.data.data);
@@ -337,7 +337,7 @@ const Profile = () => {
   return (
     <>
       <HeaderBlog />
-  {loaderSet?<LoaderPage/>:
+  {loaderSet && profileUser===undefined?<LoaderPage/>:
       <div className={styles.profileContent}>
         {profileUser ? <ProfileComp /> : <></>}
         {document !== undefined ? (
