@@ -43,7 +43,6 @@ app.use(bodyParser.json({ limit: "10mb" }));
 //     secret: allConfig.cookie_secret,
 //     resave: false,
 //     saveUninitialized: false,
-//     store: new MongoStore(options),
 //     cookie: {
 //       maxAge: 3600 * 24 * 1000, // 1 day
 //       sameSite: "Lax",

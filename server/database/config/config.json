@@ -1,26 +1,24 @@
 {
   "development": {
-    "username": "root",
-    "password": "",
-    "database": "yourthought",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-  "dialectModule": "mysql2"
+    "username": "u883350542_Yourthought",
+    "password": "Yourthought@28",
+    "database": "u883350542_Yourthought",
+    "host": "sql262.main-hosting.eu",
+    "dialect": "mysql"
+  
   },
   "test": {
-    "username": "root",
-    "password": "",
-    "database": "yourthought",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-  "dialectModule": "mysql2"
+    "username": "u883350542_Yourthought",
+    "password": "Yourthought@28",
+    "database": "u883350542_Yourthought",
+    "host": "sql262.main-hosting.eu",
+    "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "",
-    "database": "yourthought",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-  "dialectModule": "mysql2"
+    "username": "u883350542_Yourthought",
+    "password": "Yourthought@28",
+    "database": "u883350542_Yourthought",
+    "host": "sql262.main-hosting.eu",
+    "dialect": "mysql"
   }
 }

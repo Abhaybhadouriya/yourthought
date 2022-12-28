@@ -16,6 +16,7 @@ const verifyDBConnection = async () => {
   try {
     await sequelize.authenticate();
   } catch (connectionError) {
+    console.log(connectionError);
     exitWithError("Error connecting to DB:", connectionError);
   }
 };
