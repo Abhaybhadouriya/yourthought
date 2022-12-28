@@ -115,7 +115,7 @@ const Profile = () => {
   const getFollowing = () => {
     console.log(id)
     axios({
-      url: `${URL_BASE}followFunction/viewFollowers`,
+      url: `${URL_BASE}followFunction/viewFollowed`,
       changeOrigin: true,
       method: "get",
       params: { followerId: id },
