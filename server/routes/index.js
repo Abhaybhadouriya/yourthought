@@ -46,7 +46,7 @@ module.exports = (app) => {
   }); 
   app.get("/", (req, res) => {
     res.statusCode = 200;
-    res.send(`Hello................. Guest`);
+    res.send(`Hello....... <tr><td>post</td><td><a href="#">/api/user/registerUser</a></td></tr>.......... Guest`);
   }); 
 
   app.use("*", (req, res) => {
