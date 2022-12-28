@@ -51,7 +51,7 @@ module.exports = (app) => {
 
   app.use("*", (req, res) => {
     res.statusCode = 404; 
-    res.send("Not found");
+    res.send("Not found g");
   });
 };
   
