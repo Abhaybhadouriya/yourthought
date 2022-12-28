@@ -11,7 +11,7 @@ module.exports = (app) => {
   app.use("/api/documents", documents);
   app.use("/api/followFunction",followFunction);
  
-  app.get("/api/", (req, res) => {
+  app.get("/api", (req, res) => {
     res.statusCode = 200;
     res.send(`<table>
     <tr><th>Request</th><th>USER</th></tr>
