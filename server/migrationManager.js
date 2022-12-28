@@ -3,7 +3,8 @@ const { sequelize } = require("./database/models");
 async function clearDatabase() {
   await sequelize.query("DROP SCHEMA IF EXISTS public CASCADE");
   await sequelize.query("CREATE SCHEMA public");
-}
+} 
+
 
 async function clearRunningQueries() {
   try {

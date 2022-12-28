@@ -7,7 +7,7 @@ require("dotenv").config({ path: `.env.local` });
 // const { initializeApp } = require('firebase-admin/app');
 // const firebaseApp = initializeApp(firebaseConfig.config);
 // module.exports =  firebaseApp
-
+// sdas
 const firebase = admin.initializeApp({
   credential: admin.credential.cert({
     type:process.env.TYPE,

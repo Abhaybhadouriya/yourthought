@@ -5,7 +5,7 @@ const controller = require("../controller/likes");
 router.get("/likes", (req, res) => {
     controller.likes(req, res);
 });
-
+// routes
   router.get("/viewLikePost", (req, res) => {
     controller.viewLikePost(req, res);
   });
