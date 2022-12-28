@@ -38,22 +38,22 @@ app.use(
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ limit: "10mb" }));
 
-app.use(
-  session({
-    secret: allConfig.cookie_secret,
-    resave: false,
-    saveUninitialized: false,
-    store: new MongoStore(options),
-    cookie: {
-      maxAge: 3600 * 24 * 1000, // 1 day
-      sameSite: "Lax",
-      secure: true,
-      httpOnly: true,
-    },
-    name: "session",
+// app.use(
+//   session({
+//     secret: allConfig.cookie_secret,
+//     resave: false,
+//     saveUninitialized: false,
+//     store: new MongoStore(options),
+//     cookie: {
+//       maxAge: 3600 * 24 * 1000, // 1 day
+//       sameSite: "Lax",
+//       secure: true,
+//       httpOnly: true,
+//     },
+//     name: "session",
    
-  })
-);
+//   })
+// );
 
 // app.use(validateUser);
 
