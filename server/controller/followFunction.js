@@ -1,6 +1,8 @@
 const models = require("../database/models");
 const { Op } = require("sequelize");
 // const { log } = require("../utils/log");
+const { QueryTypes } = require('sequelize');
+const { sequelize } = require("../database/models");
 
 module.exports.doFollow= async (req, res) => {
   try { 
@@ -55,17 +57,22 @@ module.exports.doFollow= async (req, res) => {
 module.exports.viewFollowers = async (req, res) => {
     try {
       const {followerId} = req.query
-
-      const data =  await models.follows.findAll({
-        where:{followerId},
-        include:[{
-          model:models.User,
-          required: false,
-          attributes: ['name']
-        }],
-        attributes: ['createdAt',"followedById"]
-      })
-      return res.status(200).json({
+      const query = "SELECT * FROM `u883350542_Yourthought`.`follows` LEFT JOIN `u883350542_Yourthought`.`Users` ON `u883350542_Yourthought`.`follows`.`followedById` = `u883350542_Yourthought`.`Users`.`id` WHERE `followerId` = '"+followerId+"'";
+      // const data =  await models.follows.findAll({
+      //   where:{followerId},
+      //   include:[{
+      //     model:models.User,
+      //     required: false,
+      //     attributes: ['name'],
+      //     where:{followedById:models.User.id},
+      //   }],
+      //   attributes: ['createdAt',"followedById"]
+      // })
+      
+      const data = await sequelize.query(query , {
+        type: QueryTypes.SELECT
+          })
+            return res.status(200).json({
         data:data,
         message: "Follower List Fetched",
       });
@@ -130,8 +137,8 @@ module.exports.viewFollowCount = async (req, res) => {
   
 module.exports.notifyFollowers = async (req, res) => {
     try {
-      
-  
+
+
       return res.status(200).json({
         message: "Notifed",
       });
