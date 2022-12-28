@@ -5,10 +5,7 @@ const allConfig = {
   environment: process.env.NODE_ENV,
   client_url: "https://youthought.abhaybhadouriya.tech/",
   server_url: process.env.SERVER_BASE_URL,
-
   sendgrid: process.env.SENDGRID_KEY,
-
-
   cookie_secret: process.env.COOKIE_SECRET,
 
   // Databse config
