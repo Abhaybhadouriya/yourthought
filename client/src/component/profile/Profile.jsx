@@ -29,7 +29,7 @@ const Profile = () => {
       params: { userId: id },
     }).then((res) => {
       setLikes(res.data.data);
-      // console.log("DOCS", res.data.data);
+      // // console.log("DOCS", res.data.data);
     });
   };
   const getComment = () => {
@@ -40,7 +40,7 @@ const Profile = () => {
       params: { userId: id },
     }).then((res) => {
       setComment(res.data.data);
-      // console.log("DOCS", res.data.data);
+      // // console.log("DOCS", res.data.data);
     });
   };
   const getDocument = () => {
@@ -52,7 +52,7 @@ const Profile = () => {
     }).then((res) => {
       // setCo/mment(res.data.data)
       setDocument(res.data.data);
-      console.log("DOCS", res.data.data);
+      // console.log("DOCS", res.data.data);
     });
   };
   const getFollower = () => {
@@ -63,7 +63,7 @@ const Profile = () => {
       params: { followerId: id },
     }).then((res) => {
       // setComment(res.data.data)
-      console.log("Follower", res.data.data);
+      // console.log("Follower", res.data.data);
       setfollower(res.data.data);
     });
   };
@@ -109,11 +109,11 @@ const Profile = () => {
     }).then((res) => {
        setProfileUser(res.data.data)
       // setUser(res)
-      // console.log(res.data.data)
+      // // console.log(res.data.data)
     });
   };
   const getFollowing = () => {
-    console.log(id)
+    // console.log(id)
     axios({
       url: `${URL_BASE}followFunction/viewFollowed`,
       changeOrigin: true,
@@ -121,7 +121,7 @@ const Profile = () => {
       params: { followedById: id },
     }).then((res) => {
       // setComment(res.data.data)
-      console.log("Following", res.data.data);
+      // // console.log("Following", res.data.data);
       setfollowing(res.data.data);
     });
   };
@@ -131,7 +131,7 @@ const Profile = () => {
       if (!user) {
         navigate("/login");
       } else {
-        // console.log(user.uid)
+        // // console.log(user.uid)
         setUser(user);
         getUser()
         getLikes();
@@ -292,7 +292,7 @@ const Profile = () => {
       method: "get",
       params: { followerId: id, followedById: user.uid },
     }).then((res) => {
-      // console.log(res.data);
+      // // console.log(res.data);
       getFollower()
       getFollowing()
       setFollowerCount(res.data.totFollower);
@@ -305,7 +305,7 @@ const Profile = () => {
       method: "get",
       params: { followerId: id },
     }).then((res) => {
-      // console.log(res.data);
+      // // console.log(res.data);
       setFollowerCount(res.data.data);
     });
   }

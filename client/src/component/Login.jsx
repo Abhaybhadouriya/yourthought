@@ -50,7 +50,7 @@ const Login = () => {
         setloader(false);
         setshowPwdComp(!showPwdComp);
         notify("Password Resest Email sent...");
-        console.log("Password Resest Email sent...");
+        // console.log("Password Resest Email sent...");
       })
       .catch((error) => {
         setloader(false);

@@ -49,7 +49,7 @@ const BlogReader = () => {
       method: "get",
       params: { docId: id },
     }).then((res) => {
-      // console.log(res.data.data);
+      // // console.log(res.data.data);
       setComment(res.data.data);
     });
   };
@@ -60,7 +60,7 @@ const BlogReader = () => {
       method: "get",
       params: { followerId: data },
     }).then((res) => {
-      // console.log(res.data);
+      // // console.log(res.data);
       setFollowerCount(res.data.data);
     });
   };
@@ -78,7 +78,7 @@ const BlogReader = () => {
           })
             .then((res) => {
               setContent(res.data.doc);
-              console.log("DOCS", res.data.doc);
+              // console.log("DOCS", res.data.doc);
               getFollower(res.data.doc.userId);
             })
             .catch((e) => {
@@ -101,7 +101,7 @@ const BlogReader = () => {
       method: "get",
       params: { followerId: content.userId, followedById: user.uid },
     }).then((res) => {
-      // console.log(res.data);
+      // // console.log(res.data);
       setFollowerCount(res.data.totFollower);
     });
   };

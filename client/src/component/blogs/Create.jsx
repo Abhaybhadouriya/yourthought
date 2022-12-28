@@ -38,7 +38,7 @@ const Create = () => {
     })
       .then((res) => {
         setContent(res.data.doc);
-        console.log("DOCS", res.data.doc);
+        // console.log("DOCS", res.data.doc);
         inputTitle.current.value = res.data.doc.title
         inputContent.current.value = res.data.doc.content
         inputTags.current.value = res.data.doc.tag
@@ -46,7 +46,7 @@ const Create = () => {
       
   }
   const updateData = (e) =>{
-    console.log(e)
+    // console.log(e)
     axios({
       url: `${URL_BASE}documents/updateDocument`,
       changeOrigin: true,

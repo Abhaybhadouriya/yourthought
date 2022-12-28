@@ -35,7 +35,7 @@ const CommentParent = (props) => {
         <button onClick={() => postComment()} className={styles.btnComment}>
           Comment
         </button>
-        {console.log(app)}
+        {/* {console.log(app)} */}
       </div>
       {props.comment !== undefined ? (
         props.comment.map((e, i) => {

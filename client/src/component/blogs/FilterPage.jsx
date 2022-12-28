@@ -31,7 +31,7 @@ const FilterPage = (props) => {
       params: { query: query },
     }).then((res) => {
       setdata(res.data.document);
-      console.log(res.data.document);
+      // console.log(res.data.document);
     });
   }, [props.props.searchQuery]);
 
