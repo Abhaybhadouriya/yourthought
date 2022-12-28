@@ -64,7 +64,7 @@ app.get("/", (req, res) => {
 app.use(function (req, res, next) {
 
   // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'https://youthought.abhaybhadouriya.tech/');
+  res.setHeader('Access-Control-Allow-Origin', 'https://youthought.abhaybhadouriya.tech/SS');
 
   // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
