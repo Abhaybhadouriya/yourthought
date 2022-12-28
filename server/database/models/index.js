@@ -37,6 +37,7 @@ db.Sequelize = Sequelize;
 
 // db.sequelize.sync().then(()=>{
 //   console.log("Tables Created");
+
 // })
 
 module.exports = db;
