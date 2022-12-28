@@ -3,7 +3,7 @@ require("dotenv").config({ path: `.env.local` });
 const allConfig = {
   port: 5000,
   environment: process.env.NODE_ENV,
-  client_url: process.env.CLIENT_BASE_URL,
+  client_url: "https://youthought.abhaybhadouriya.tech/",
   server_url: process.env.SERVER_BASE_URL,
 
   sendgrid: process.env.SENDGRID_KEY,
