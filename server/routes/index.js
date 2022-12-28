@@ -17,6 +17,7 @@ module.exports = (app) => {
     <tr><th>Request</th><th>USER</th></tr>
     <tr><td>post</td><td><a href="#">/api/user/registerUser</a></td></tr>
     <tr><td>get</td><td><a href="#">/api/user/userBanByAdmin</a></td></tr>
+    <tr><td>get</td><td><a href="#">/api/user/getUser</a></td></tr>
     <tr><th>Request</th><th>LIKES</th></tr>
     <tr><td>get</td><td><a href="#">/api/likes/viewLikePost</a></td></tr>
     <tr><td>get</td><td><a href="#">/api/likes/viewLikeInProfile</a></td></tr>

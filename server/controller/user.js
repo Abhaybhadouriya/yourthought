@@ -85,7 +85,36 @@ module.exports.registerUser = async (req, res) => {
     });
   }
 };
+module.exports.getUser = async (req, res) => {
+  try {
+    const { uid} = req.query;
 
+    firebase.auth()
+    .getUser(uid)
+    .then((userRecord) => {
+      // See the UserRecord reference doc for the contents of userRecord.
+      return res.status(200).json({
+        data:userRecord.toJSON(),
+        status: 200,
+        message: "Fetched",
+      });
+    })
+    .catch((error) => {
+      return res.status(500).json({
+        err:error,
+        status: 500,
+        message: "Something went wrong",
+      });
+    });
+   
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      status: 500,
+      message: "Internal server error occured. Please try again",
+    });
+  }
+};
 module.exports.userBanByAdmin = async (req, res) => {
   try {
     return res.status(200).json({

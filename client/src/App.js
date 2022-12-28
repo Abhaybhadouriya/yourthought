@@ -5,6 +5,8 @@ import Login from './component/Login';
 import BlogReader from './component/blogs/BlogReader';
 import Profile from './component/profile/Profile'
 import SorryNoBlogs from './component/blogs/SorryNoBlogs';
+import Create from './component/blogs/Create';
+
 function App() {
   return (
     <BrowserRouter>
@@ -14,6 +16,7 @@ function App() {
         <Route path="blogs/:id"  element={<BlogReader/>} />
         <Route path="profile/:id" element={<Profile/>} />
         <Route path="*" element={<SorryNoBlogs />} />
+        <Route path="doblogs/:id" element={<Create/>}/>
      
     </Routes>
    </BrowserRouter>

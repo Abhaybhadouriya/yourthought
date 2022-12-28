@@ -10,5 +10,8 @@ router.post("/registerUser", (req, res) => {
 router.get("/userBanByAdmin", (req, res) => {
       controller.userBanByAdmin(req, res);
   });
+  router.get("/getUser", (req, res) => {
+    controller.getUser(req, res);
+});
 
 module.exports = router;

@@ -1,0 +1,38 @@
+.outer{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 80vh;
+
+}
+.input{
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    border-radius: 5px;
+
+}
+.textAreaContent{
+    padding: 10px;
+    margin-bottom: 10px;
+    resize: none;
+    height: 30vh;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.textAreaTags{
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+.saveBtn{
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 22px;
+    font-weight: 500;
+    color: white;
+    background-color: rgb(50, 150, 250);
+    border: none;
+    border-radius: 15px;
+}

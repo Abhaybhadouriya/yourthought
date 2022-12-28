@@ -63,7 +63,7 @@ module.exports.viewFollowers = async (req, res) => {
           required: false,
           attributes: ['name']
         }],
-        attributes: ['createdAt']
+        attributes: ['createdAt',"followedById"]
       })
       return res.status(200).json({
         data:data,
@@ -89,7 +89,7 @@ module.exports.viewFollowers = async (req, res) => {
           required: false,
           attributes: ['name']
         }],
-        attributes: ['createdAt']
+        attributes: ['createdAt',"followedById"]
       })
       return res.status(200).json({
         data:data,

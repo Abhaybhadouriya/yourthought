@@ -6,7 +6,7 @@ const { v4: uuidv4 } = require("uuid");
 
 module.exports.updateDocument = async (req, res) => {
   try {
-    const { title, content, userId, tags, name, docId } = req.body;
+    const { title, content, userId, tags, name, docId } = req.query.e;
     const fs = firebase.firestore();
 
     fs.collection('documents').doc(docId).set({
@@ -15,6 +15,9 @@ module.exports.updateDocument = async (req, res) => {
       userId: userId,
       tag: tags,
       content: content
+    })
+    await models.Document.update({title:title,tags:tags},{
+      where:{id:docId}
     })
     return res.status(201).json({
       message: "Blog is Updated Successfully",
@@ -32,7 +35,7 @@ module.exports.updateDocument = async (req, res) => {
 
 module.exports.saveDocument = async (req, res) => {
   try {
-    const { title, content, userId, tags, name, date } = req.body;
+    const { title, content, userId, tags, name} = req.query.e;
     const docId = uuidv4()
     const fs = firebase.firestore();
 
@@ -67,7 +70,7 @@ module.exports.saveDocument = async (req, res) => {
 
 module.exports.deleteDocument = async (req, res) => {
   try {
-    const { docId } = req.body;
+    const { docId } = req.query;
     firebase.firestore().collection('documents').doc(docId).delete()
     const document = await models.Document.findOne({
       where: {
@@ -132,21 +135,21 @@ module.exports.viewDocumentListUser = async (req, res) => {
   try {
 
     const { userId } = req.query;
-    const docRef = firebase.firestore().collection('documents')
-    const snapshot = await docRef.where('userId', '==', userId).get();
-    if (snapshot.empty) {
-      return res.status(404).json({
-        status: 404,
-        message: "No such document!",
-      });
-    }
+    const dataJson = await models.Document.findAll({
+      where:{
+        userId:userId
+      },
+      
+      attributes: ['id',"published","title","createdAt","tags","userId"]
+     
+    })
 
     // snapshot.forEach(doc => {
     //   console.log(doc.id, '=>', doc.data());
     // });
 
     return res.status(200).json({
-      data: snapshot,
+      data: dataJson,
       status: 200,
       message: "Document List Fetched successfully",
     });
@@ -190,7 +193,7 @@ module.exports.filterList = async (req, res) => {
 
 module.exports.publishDocument = async (req, res) => {
   try {
-    const { docId } = req.body;
+    const { docId } = req.query;
     await models.Document.update({published:1},{
       where:{id:docId}
     })
@@ -209,7 +212,7 @@ module.exports.publishDocument = async (req, res) => {
 
 module.exports.unpublishDocument = async (req, res) => {
   try {
-    const { docId } = req.body;
+    const { docId } = req.query;
     await models.Document.update({published:0},{
       where:{id:docId}
     })

@@ -8,6 +8,7 @@ const LoggedIn = (props) => {
   return (
     <>
     <HeaderBlog/>
+    
     <Header props={props}/>
     <FilterPage props={props}/>
     <Footer/>

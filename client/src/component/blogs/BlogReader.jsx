@@ -21,7 +21,7 @@ const BlogReader = () => {
   const [comment, setComment] = useState(undefined);
   const [loaderSet, setloaderSet] = useState(true);
   const [user, setUser] = useState();
-  const [FollowerCount, setFollowerCount] = useState(0)
+  const [FollowerCount, setFollowerCount] = useState(0);
   const likePost = () => {
     axios({
       url: `${URL_BASE}likes/likes`,
@@ -53,7 +53,7 @@ const BlogReader = () => {
       setComment(res.data.data);
     });
   };
-  const getFollower = (data) =>{
+  const getFollower = (data) => {
     axios({
       url: `${URL_BASE}followFunction/viewFollowCount`,
       changeOrigin: true,
@@ -63,7 +63,7 @@ const BlogReader = () => {
       // console.log(res.data);
       setFollowerCount(res.data.data);
     });
-  }
+  };
   useEffect(() => {
     onAuthStateChanged(app, (user) => {
       if (!user) {
@@ -86,7 +86,6 @@ const BlogReader = () => {
             });
           getComment();
           getLikes();
-        
         }
         setUser(user);
       }
@@ -95,17 +94,17 @@ const BlogReader = () => {
     // eslint-disable-next-line
   }, [id]);
 
-  const doFollow = () =>{
+  const doFollow = () => {
     axios({
       url: `${URL_BASE}followFunction/doFollow`,
       changeOrigin: true,
       method: "get",
-      params: { followerId: content.userId, followedById:user.uid },
+      params: { followerId: content.userId, followedById: user.uid },
     }).then((res) => {
       // console.log(res.data);
       setFollowerCount(res.data.totFollower);
     });
-  }
+  };
 
   return (
     <>
@@ -121,23 +120,37 @@ const BlogReader = () => {
 
                 <p className={styles.author}>
                   {" "}
-                  <Link  to={`/profile/${content.userId}`}>
-                  <button className={styles.authorSpan}>Post by ~ {content.name}</button>
+                  <Link to={`/profile/${content.userId}`}>
+                    <button className={styles.authorSpan}>
+                      Post by ~ {content.name}
+                    </button>
                   </Link>
-                  
                 </p>
                 <div className={styles.divLike}>
                   <button onClick={likePost} className={styles.likeBtn}>
                     <i className="fa fa-thumbs-up" aria-hidden="true" /> {likes}{" "}
                     Like
                   </button>
-                  <button onClick={doFollow} className={styles.followBtn}>
-                    <i className="fa fa-rss" aria-hidden="true" />{FollowerCount} Follow
-                  </button>
+                  {user.uid !== content.userId ? (
+                    <button onClick={doFollow} className={styles.followBtn}>
+                      <i className="fa fa-rss" aria-hidden="true" />
+                      {FollowerCount} Follow
+                    </button>
+                  ) : (
+                    <button className={styles.followBtn}>
+                      <i className="fa fa-rss" aria-hidden="true" />
+                      {FollowerCount} Follow
+                    </button>
+                  )}
                 </div>
               </div>
               {/* {(new Date(props.date).toLocaleTimeString()) +"   "+(new Date(props.date).toLocaleDateString())} */}
-              <CommentParent userId={user.uid} docId={id} comment={comment} getComment={getComment} />
+              <CommentParent
+                userId={user.uid}
+                docId={id}
+                comment={comment}
+                getComment={getComment}
+              />
             </>
           ) : (
             <LoaderPage />

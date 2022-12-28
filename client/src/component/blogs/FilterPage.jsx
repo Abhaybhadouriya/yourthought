@@ -5,9 +5,8 @@ import SorryNoBlogs from "./SorryNoBlogs";
 import { URL_BASE } from "../../services/constant";
 import LoaderPage from "../LoaderPage";
 const FilterPage = (props) => {
-  
   const [data, setdata] = useState([]);
-  const style ={
+  const style = {
     padding: 10,
     backgroundImage: "url(/background.jpg)",
     placeContent: "flex-start center",
@@ -18,8 +17,9 @@ const FilterPage = (props) => {
     justifyContent: "center",
     backgroundAttachment: "fixed",
     backgroundSize: "cover",
-    minHeight:"90vh"
-  }
+    minHeight: "90vh",
+  };
+  
   useEffect(() => {
     let query = "";
     if (props.props.searchQuery !== undefined)
@@ -36,25 +36,31 @@ const FilterPage = (props) => {
   }, [props.props.searchQuery]);
 
   return (
-    <div
-      style={style}
-    >{data===[]?<LoaderPage/>:<>
-      {data.length !== 0 ? (
-        data.map((e, i) => {
-          return (
-            <BlogTile
-              key={i}
-              name={e["User"]["name"]}
-              date={e["createdAt"]}
-              title={e["title"]}
-              tags={e["tags"]}
-              id={e['id']}
-            />
-          );
-        })
+    <div style={style}>
+      
+
+      {data === [] ? (
+        <LoaderPage />
       ) : (
-        <SorryNoBlogs />
-      )}</>}
+        <>
+          {data.length !== 0 ? (
+            data.map((e, i) => {
+              return (
+                <BlogTile
+                  key={i}
+                  name={e["User"]["name"]}
+                  date={e["createdAt"]}
+                  title={e["title"]}
+                  tags={e["tags"]}
+                  id={e["id"]}
+                />
+              );
+            })
+          ) : (
+            <SorryNoBlogs />
+          )}
+        </>
+      )}
     </div>
   );
 };

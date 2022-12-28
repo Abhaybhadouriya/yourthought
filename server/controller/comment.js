@@ -108,7 +108,7 @@ module.exports.viewCommentOnProfile = async (req, res) => {
           required: false,
           attributes: ['title', 'tags','createdAt']
         }],
-        attributes: ["commentText"]
+        attributes: ["commentText",'docId']
       })
   
       return res.status(200).json({
