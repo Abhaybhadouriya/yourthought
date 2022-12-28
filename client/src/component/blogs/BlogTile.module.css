@@ -5,21 +5,24 @@
     background-color: rgb(255, 255, 255);
     padding: 10px;
     width: 350px;
+    background-color: hsla(0,25%,100%,.7);
+
 }
 
 .title{
     font-size: 24px;
     color: black;
     font-weight: 550;
-    font-family: cursive;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding: 1px;
 }
 .tags{
-    font-size: 18px;
+    font-size: 16px;
     color: rgb(58, 57, 57);
     font-weight: 400;
-    font-family: cursive;
-    padding: 1px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 2px;
+
 
 }
 .date{
@@ -45,8 +48,10 @@
 
 .button{
     border-width: 0px ;
-   background-color: rgb(20, 120, 220);
-   color: white;
+   /* background-color: rgb(20, 120, 220); */
+   color: rgb(0, 0, 0);
+   background-color: transparent;
+   border: 1px solid rgb(163, 163, 163);
    font-size: 18px;
    cursor: pointer;
    border-radius: 10px;
@@ -54,4 +59,18 @@
    padding-bottom: 5px;
    padding-left: 10px;
    padding-right: 10px;
+}
+.button:hover{
+    border-width: 0px ;
+    /* background-color: rgb(20, 120, 220); */
+    color: rgb(0, 0, 0);
+    background-color: rgb(235, 235, 235);
+    border: 1px solid rgb(163, 163, 163);
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
 }

@@ -7,7 +7,7 @@
     padding-left: 5px;
     margin-bottom: 10px;
     width: 95%;
-    background-color: hsla(0,0%,100%,.5);
+    background-color: hsla(0,0%,100%,.7);
     border-radius: 25px;
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 4px 8px 0 rgb(0 0 0 / 20%);
 }
@@ -25,12 +25,26 @@
     padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 10px;
-    background-color: rgb(50, 150, 250);
-    border: none;
+    background-color: transparent;
+    border: 1px solid rgb(163, 163, 163);
     border-radius: 10px;
-    color: #fff;
+    color: rgb(0, 0, 0);
     font-size: 16px;
     margin-bottom: 5px;
+    cursor: pointer;
+}
+.btnShow:hover{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(235, 235, 235);
+    border: 1px solid rgb(163, 163, 163);
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    margin-bottom: 5px;
+    cursor: pointer;
 }
 .profileContent{
     display: flex;
